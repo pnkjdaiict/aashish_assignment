@@ -1,6 +1,8 @@
+// /app/layout.tsx (or RootLayout file)
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import DashboardLayout from "@/components/home/DashboardLayout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -19,15 +21,13 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-hidden`}
       >
-        {children}
+        <DashboardLayout>{children}</DashboardLayout>
       </body>
     </html>
   );
